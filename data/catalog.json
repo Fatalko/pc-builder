@@ -554,6 +554,7 @@
       "length": 295,
       "tdp": 280,
       "price": 80000
+<<<<<<< HEAD
     },
     {
       "id": "gpu01",
@@ -563,6 +564,8 @@
       "last_updated": "2026-07-05T20:08:43.037500",
       "length": 250,
       "tdp": 150
+=======
+>>>>>>> aa3d03acfa521bf0a05466e543a1144076873ac9
     }
   ],
   "psu": [
@@ -625,6 +628,7 @@
       "name": "Corsair AX1600i Titanium",
       "wattage": 1600,
       "price": 50000
+<<<<<<< HEAD
     },
     {
       "id": "psu01",
@@ -633,6 +637,8 @@
       "source": "PricesAPI",
       "last_updated": "2026-07-05T20:38:13.494385",
       "wattage": 750
+=======
+>>>>>>> aa3d03acfa521bf0a05466e543a1144076873ac9
     }
   ],
   "case": [

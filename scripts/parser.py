@@ -23,43 +23,73 @@ DNS_CATEGORIES = {
     "storage": "https://www.dns-shop.ru/catalog/17a89c3916404e77/zhestkie-diski-i-ssd/",
 }
 
+# Более реалистичные заголовки
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-    "Accept-Language": "ru-RU,ru;q=0.9",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.5,en;q=0.3",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
+    "Cache-Control": "max-age=0",
 }
 
 def fetch_page(url: str) -> str:
-    """Скачивает страницу с обработкой ошибок."""
-    req = urllib.request.Request(url, headers=HEADERS)
-    try:
-        with urllib.request.urlopen(req, timeout=15) as response:
-            return response.read().decode('utf-8')
-    except urllib.error.HTTPError as e:
-        print(f"HTTP Error {e.code} for {url}")
-        return ""
-    except Exception as e:
-        print(f"Error fetching {url}: {e}")
-        return ""
+    """Скачивает страницу с обработкой ошибок и задержками."""
+    print(f"  Запрос: {url}")
+    
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=30) as response:
+                html = response.read().decode('utf-8')
+                print(f"  ✅ Успешно получено")
+                return html
+        except urllib.error.HTTPError as e:
+            print(f"  ⚠ HTTP Error {e.code} (попытка {attempt + 1}/{max_retries})")
+            if attempt < max_retries - 1:
+                time.sleep(5)  # Ждём перед повторной попыткой
+        except Exception as e:
+            print(f"  ⚠ Error: {e} (попытка {attempt + 1}/{max_retries})")
+            if attempt < max_retries - 1:
+                time.sleep(3)
+    
+    print(f"  ❌ Не удалось получить страницу после {max_retries} попыток")
+    return ""
 
 def parse_price(price_text: str) -> int:
     """Извлекает цену из текста."""
+    if not price_text:
+        return 0
     digits = re.sub(r'\D', '', price_text)
     return int(digits) if digits else 0
 
 def parse_cpu(html: str) -> list:
     """Парсит процессоры."""
+    if not html:
+        return []
+    
     soup = BeautifulSoup(html, 'html.parser')
     items = []
     
-    for card in soup.select('.catalog-product.ui-button'):
+    # Пробуем разные селекторы (DNS меняет структуру)
+    for card in soup.select('.catalog-product.ui-button, .product-card, [data-product]'):
         try:
-            title = card.select_one('.catalog-product__name')
-            price = card.select_one('.price__current-value')
+            title = card.select_one('.catalog-product__name, .product-card__title, .product-title')
+            price = card.select_one('.price__current-value, .price__current, .product-card__price')
+            
             if not title or not price:
                 continue
             
             name = title.get_text(strip=True)
             price_val = parse_price(price.get_text())
+            
+            if price_val == 0:
+                continue
             
             # Определяем сокет из названия
             socket = None
@@ -88,22 +118,30 @@ def parse_cpu(html: str) -> list:
         except Exception as e:
             continue
     
+    print(f"  Найдено процессоров: {len(items)}")
     return items
 
 def parse_gpu(html: str) -> list:
     """Парсит видеокарты."""
+    if not html:
+        return []
+    
     soup = BeautifulSoup(html, 'html.parser')
     items = []
     
-    for card in soup.select('.catalog-product.ui-button'):
+    for card in soup.select('.catalog-product.ui-button, .product-card, [data-product]'):
         try:
-            title = card.select_one('.catalog-product__name')
-            price = card.select_one('.price__current-value')
+            title = card.select_one('.catalog-product__name, .product-card__title, .product-title')
+            price = card.select_one('.price__current-value, .price__current, .product-card__price')
+            
             if not title or not price:
                 continue
             
             name = title.get_text(strip=True)
             price_val = parse_price(price.get_text())
+            
+            if price_val == 0:
+                continue
             
             # Определяем длину (примерно по серии)
             length = 250
@@ -132,22 +170,30 @@ def parse_gpu(html: str) -> list:
         except Exception as e:
             continue
     
+    print(f"  Найдено видеокарт: {len(items)}")
     return items
 
 def parse_generic(html: str, category: str) -> list:
     """Универсальный парсер для остальных категорий."""
+    if not html:
+        return []
+    
     soup = BeautifulSoup(html, 'html.parser')
     items = []
     
-    for card in soup.select('.catalog-product.ui-button'):
+    for card in soup.select('.catalog-product.ui-button, .product-card, [data-product]'):
         try:
-            title = card.select_one('.catalog-product__name')
-            price = card.select_one('.price__current-value')
+            title = card.select_one('.catalog-product__name, .product-card__title, .product-title')
+            price = card.select_one('.price__current-value, .price__current, .product-card__price')
+            
             if not title or not price:
                 continue
             
             name = title.get_text(strip=True)
             price_val = parse_price(price.get_text())
+            
+            if price_val == 0:
+                continue
             
             item = {"name": name, "price": price_val}
             
@@ -210,26 +256,34 @@ def parse_generic(html: str, category: str) -> list:
         except Exception as e:
             continue
     
+    print(f"  Найдено {category}: {len(items)}")
     return items
 
 def update_catalog():
     """Главная функция обновления каталога."""
-    catalog_path = Path("data/catalog.json")
+    # Правильный путь к файлу (от корня репозитория)
+    catalog_path = Path(__file__).parent.parent / "data" / "catalog.json"
+    
+    print(f"Путь к каталогу: {catalog_path}")
+    print(f"Каталог существует: {catalog_path.exists()}")
     
     # Загружаем существующий каталог
     if catalog_path.exists():
         with open(catalog_path, 'r', encoding='utf-8') as f:
             catalog = json.load(f)
+        print(f"✅ Загружен существующий каталог")
     else:
         catalog = {}
+        print("⚠ Создаём новый каталог")
     
     # Парсим каждую категорию
+    total_items = 0
     for category, url in DNS_CATEGORIES.items():
-        print(f"Парсинг {category}...")
+        print(f"\nПарсинг {category}...")
         html = fetch_page(url)
         
         if not html:
-            print(f"  ⚠ Не удалось получить {url}")
+            print(f"  ⚠ Не удалось получить {url}, пропускаем")
             continue
         
         # Выбираем парсер
@@ -240,33 +294,42 @@ def update_catalog():
         else:
             items = parse_generic(html, category)
         
-        print(f"  Найдено {len(items)} товаров")
+        if not items:
+            print(f"  ⚠ Не найдено товаров в {category}")
+            continue
         
-        # Обновляем каталог (добавляем новые, обновляем цены существующих)
+        total_items += len(items)
+        
+        # Обновляем каталог
         if category not in catalog:
             catalog[category] = []
         
+        # Добавляем только новые товары (не перезаписываем существующие)
+        existing_names = {item.get('name') for item in catalog[category]}
+        new_items = 0
+        
         for item in items:
-            # Ищем существующий товар по названию
-            existing = next((x for x in catalog[category] if x.get('name') == item['name']), None)
-            
-            if existing:
-                # Обновляем цену
-                existing['price'] = item['price']
-            else:
+            if item['name'] not in existing_names:
                 # Добавляем новый товар с ID
                 item_id = f"{category[:3]}{len(catalog[category]) + 1:02d}"
                 item['id'] = item_id
                 catalog[category].append(item)
+                new_items += 1
         
-        # Пауза между запросами
-        time.sleep(2)
+        print(f"  Добавлено новых: {new_items}")
+        
+        # Пауза между запросами (чтобы не блокировали)
+        print(f"  Пауза 3 секунды...")
+        time.sleep(3)
     
     # Сохраняем обновлённый каталог
+    catalog_path.parent.mkdir(parents=True, exist_ok=True)
     with open(catalog_path, 'w', encoding='utf-8') as f:
         json.dump(catalog, f, ensure_ascii=False, indent=2)
     
-    print(f"✅ Каталог обновлён: {catalog_path}")
+    print(f"\n✅ Каталог обновлён!")
+    print(f"📊 Всего товаров: {total_items}")
+    print(f"💾 Сохранено в: {catalog_path}")
 
 if __name__ == "__main__":
     update_catalog()

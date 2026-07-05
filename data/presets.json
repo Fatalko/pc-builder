@@ -7,38 +7,108 @@
       "motherboard": "mb1",
       "ram": "ram1",
       "gpu": null,
-      "storage": "ssd1",
+      "storage": "ssd2",
       "psu": "psu1",
       "case": "case1",
       "cooler": "cool1"
     }
   },
-  "gaming1080": {
-    "name": "Игры 1080p",
-    "description": "Баланс цены и производительности",
+  "budget_gaming": {
+    "name": "Бюджетный гейминг",
+    "description": "Игры в 1080p на средних настройках",
     "items": {
       "cpu": "cpu2",
       "motherboard": "mb2",
       "ram": "ram2",
-      "gpu": "gpu1",
-      "storage": "ssd1",
+      "gpu": "gpu2",
+      "storage": "ssd2",
       "psu": "psu2",
-      "case": "case1",
+      "case": "case2",
       "cooler": "cool1"
+    }
+  },
+  "gaming1080": {
+    "name": "Игры 1080p",
+    "description": "Высокие настройки, 60+ FPS",
+    "items": {
+      "cpu": "cpu3",
+      "motherboard": "mb3",
+      "ram": "ram2",
+      "gpu": "gpu3",
+      "storage": "ssd3",
+      "psu": "psu3",
+      "case": "case2",
+      "cooler": "cool2"
+    }
+  },
+  "gaming1440p": {
+    "name": "Игры 1440p",
+    "description": "Оптимальный выбор для 2K монитора",
+    "items": {
+      "cpu": "cpu4",
+      "motherboard": "mb4",
+      "ram": "ram4",
+      "gpu": "gpu4",
+      "storage": "ssd3",
+      "psu": "psu4",
+      "case": "case3",
+      "cooler": "cool3"
     }
   },
   "gaming4k": {
     "name": "Игры 4K",
     "description": "Максимальная производительность",
     "items": {
-      "cpu": "cpu4",
-      "motherboard": "mb4",
-      "ram": "ram3",
-      "gpu": "gpu2",
-      "storage": "ssd2",
-      "psu": "psu3",
-      "case": "case2",
-      "cooler": "cool2"
+      "cpu": "cpu5",
+      "motherboard": "mb5",
+      "ram": "ram5",
+      "gpu": "gpu6",
+      "storage": "ssd4",
+      "psu": "psu5",
+      "case": "case4",
+      "cooler": "cool4"
+    }
+  },
+  "ultra_4k": {
+    "name": "Ультра 4K",
+    "description": "Без компромиссов. RTX 4090",
+    "items": {
+      "cpu": "cpu6",
+      "motherboard": "mb5",
+      "ram": "ram5",
+      "gpu": "gpu7",
+      "storage": "ssd6",
+      "psu": "psu6",
+      "case": "case6",
+      "cooler": "cool6"
+    }
+  },
+  "amd_gaming": {
+    "name": "AMD Gaming",
+    "description": "Платформа AM5, Ryzen 7 7800X3D",
+    "items": {
+      "cpu": "cpu10",
+      "motherboard": "mb9",
+      "ram": "ram4",
+      "gpu": "gpu5",
+      "storage": "ssd4",
+      "psu": "psu4",
+      "case": "case3",
+      "cooler": "cool3"
+    }
+  },
+  "workstation": {
+    "name": "Рабочая станция",
+    "description": "Для рендера и монтажа",
+    "items": {
+      "cpu": "cpu11",
+      "motherboard": "mb10",
+      "ram": "ram5",
+      "gpu": "gpu7",
+      "storage": "ssd6",
+      "psu": "psu6",
+      "case": "case6",
+      "cooler": "cool5"
     }
   }
 }

@@ -92,17 +92,10 @@ function copyText() {
   alert('Скопировано в буфер обмена');
 }
 
-// История сборок
 function renderHistory() {
-  console.log('[renderHistory] вызван');
   const list = document.getElementById('builds-list');
-  if (!list) {
-    console.error('[renderHistory] builds-list не найден в DOM');
-    return;
-  }
-
+  if (!list) return;
   const saved = JSON.parse(localStorage.getItem('builds') || '[]');
-  console.log('[renderHistory] сборок в памяти:', saved.length);
 
   if (saved.length === 0) {
     list.innerHTML = '<div class="empty-history">Пока нет сохранённых сборок</div>';
@@ -130,7 +123,6 @@ function renderHistory() {
     card.onclick = () => loadBuild(index);
     list.appendChild(card);
   });
-  console.log('[renderHistory] отрисовано карточек:', saved.length);
 }
 
 function loadBuild(index) {
@@ -159,7 +151,7 @@ let presets = {};
 fetch('data/presets.json')
   .then(r => r.json())
   .then(data => { presets = data; renderPresets(); })
-  .catch(() => console.log('presets.json не найден — это нормально'));
+  .catch(() => console.log('presets.json не найден'));
 
 function renderPresets() {
   const container = document.getElementById('presets-buttons');
@@ -177,7 +169,7 @@ function renderPresets() {
 function applyPreset(key) {
   const preset = presets[key];
   if (!preset) return;
-  if (!confirm(`Применить пресет "${preset.name}"?`)) return;
+  if (!confirm(`Применить пресет "${preset.name}"?\n${preset.description}`)) return;
   Object.keys(build).forEach(slot => {
     const id = preset.items[slot];
     build[slot] = (id && catalog[slot]) ? catalog[slot].find(x => x.id === id) || null : null;
@@ -186,9 +178,8 @@ function applyPreset(key) {
   render();
 }
 
-// === ГЛАВНОЕ: запускаем всё после полной загрузки DOM ===
+// Запуск
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM готов');
   renderHistory();
   render();
 });

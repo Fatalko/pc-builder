@@ -1,41 +1,79 @@
 {
   "cpu": [
-    {"id": "cpu1", "name": "Intel Core i5-12400F", "socket": "LGA1700", "tdp": 117, "price": 14000},
-    {"id": "cpu2", "name": "Intel Core i5-13400F", "socket": "LGA1700", "tdp": 148, "price": 18500},
-    {"id": "cpu3", "name": "AMD Ryzen 5 5600", "socket": "AM4", "tdp": 65, "price": 13000},
-    {"id": "cpu4", "name": "AMD Ryzen 5 7600", "socket": "AM5", "tdp": 105, "price": 22000}
+    {"id": "cpu1", "name": "Intel Core i3-12100F", "socket": "LGA1700", "tdp": 89, "price": 9500},
+    {"id": "cpu2", "name": "Intel Core i5-12400F", "socket": "LGA1700", "tdp": 117, "price": 14000},
+    {"id": "cpu3", "name": "Intel Core i5-13400F", "socket": "LGA1700", "tdp": 148, "price": 18500},
+    {"id": "cpu4", "name": "Intel Core i5-14600KF", "socket": "LGA1700", "tdp": 181, "price": 28000},
+    {"id": "cpu5", "name": "Intel Core i7-14700KF", "socket": "LGA1700", "tdp": 253, "price": 42000},
+    {"id": "cpu6", "name": "Intel Core i9-14900K", "socket": "LGA1700", "tdp": 253, "price": 65000},
+    {"id": "cpu7", "name": "AMD Ryzen 5 5600", "socket": "AM4", "tdp": 65, "price": 13000},
+    {"id": "cpu8", "name": "AMD Ryzen 7 5800X3D", "socket": "AM4", "tdp": 105, "price": 32000},
+    {"id": "cpu9", "name": "AMD Ryzen 5 7600", "socket": "AM5", "tdp": 105, "price": 22000},
+    {"id": "cpu10", "name": "AMD Ryzen 7 7800X3D", "socket": "AM5", "tdp": 120, "price": 45000},
+    {"id": "cpu11", "name": "AMD Ryzen 9 7950X", "socket": "AM5", "tdp": 170, "price": 68000}
   ],
   "motherboard": [
-    {"id": "mb1", "name": "MSI PRO B660M-A", "socket": "LGA1700", "ram_type": "DDR4", "form": "mATX", "price": 10000},
-    {"id": "mb2", "name": "ASUS PRIME B760M-K", "socket": "LGA1700", "ram_type": "DDR4", "form": "mATX", "price": 11000},
-    {"id": "mb3", "name": "Gigabyte B550M AORUS", "socket": "AM4", "ram_type": "DDR4", "form": "mATX", "price": 9500},
-    {"id": "mb4", "name": "MSI PRO B650M-P", "socket": "AM5", "ram_type": "DDR5", "form": "mATX", "price": 14000}
+    {"id": "mb1", "name": "MSI PRO H610M-E", "socket": "LGA1700", "ram_type": "DDR4", "form": "mATX", "price": 8000},
+    {"id": "mb2", "name": "MSI PRO B660M-A", "socket": "LGA1700", "ram_type": "DDR4", "form": "mATX", "price": 10000},
+    {"id": "mb3", "name": "ASUS PRIME B760M-K", "socket": "LGA1700", "ram_type": "DDR4", "form": "mATX", "price": 11000},
+    {"id": "mb4", "name": "Gigabyte Z790 AORUS ELITE", "socket": "LGA1700", "ram_type": "DDR5", "form": "ATX", "price": 24000},
+    {"id": "mb5", "name": "ASUS ROG STRIX Z790-E", "socket": "LGA1700", "ram_type": "DDR5", "form": "ATX", "price": 42000},
+    {"id": "mb6", "name": "Gigabyte B550M AORUS", "socket": "AM4", "ram_type": "DDR4", "form": "mATX", "price": 9500},
+    {"id": "mb7", "name": "MSI B550 TOMAHAWK", "socket": "AM4", "ram_type": "DDR4", "form": "ATX", "price": 13000},
+    {"id": "mb8", "name": "MSI PRO B650M-P", "socket": "AM5", "ram_type": "DDR5", "form": "mATX", "price": 14000},
+    {"id": "mb9", "name": "ASUS TUF B650-PLUS", "socket": "AM5", "ram_type": "DDR5", "form": "ATX", "price": 21000},
+    {"id": "mb10", "name": "Gigabyte X670E AORUS MASTER", "socket": "AM5", "ram_type": "DDR5", "form": "ATX", "price": 48000}
   ],
   "ram": [
     {"id": "ram1", "name": "Kingston Fury 16GB DDR4 3200", "type": "DDR4", "capacity": 16, "price": 4000},
     {"id": "ram2", "name": "Kingston Fury 32GB DDR4 3200", "type": "DDR4", "capacity": 32, "price": 7500},
-    {"id": "ram3", "name": "Kingston Fury 32GB DDR5 5600", "type": "DDR5", "capacity": 32, "price": 11000}
+    {"id": "ram3", "name": "Kingston Fury 64GB DDR4 3200", "type": "DDR4", "capacity": 64, "price": 14000},
+    {"id": "ram4", "name": "G.Skill Trident Z5 32GB DDR5 5600", "type": "DDR5", "capacity": 32, "price": 11000},
+    {"id": "ram5", "name": "G.Skill Trident Z5 64GB DDR5 6000", "type": "DDR5", "capacity": 64, "price": 22000},
+    {"id": "ram6", "name": "Corsair Vengeance 32GB DDR5 6400", "type": "DDR5", "capacity": 32, "price": 14000}
   ],
   "gpu": [
-    {"id": "gpu1", "name": "NVIDIA RTX 4060", "length": 245, "tdp": 115, "price": 38000},
-    {"id": "gpu2", "name": "NVIDIA RTX 4070", "length": 300, "tdp": 200, "price": 65000},
-    {"id": "gpu3", "name": "AMD RX 7600", "length": 265, "tdp": 165, "price": 32000}
+    {"id": "gpu1", "name": "NVIDIA RTX 3050", "length": 200, "tdp": 130, "price": 22000},
+    {"id": "gpu2", "name": "NVIDIA RTX 4060", "length": 245, "tdp": 115, "price": 38000},
+    {"id": "gpu3", "name": "NVIDIA RTX 4060 Ti", "length": 245, "tdp": 160, "price": 48000},
+    {"id": "gpu4", "name": "NVIDIA RTX 4070", "length": 300, "tdp": 200, "price": 65000},
+    {"id": "gpu5", "name": "NVIDIA RTX 4070 Ti Super", "length": 304, "tdp": 285, "price": 85000},
+    {"id": "gpu6", "name": "NVIDIA RTX 4080 Super", "length": 336, "tdp": 320, "price": 115000},
+    {"id": "gpu7", "name": "NVIDIA RTX 4090", "length": 358, "tdp": 450, "price": 195000},
+    {"id": "gpu8", "name": "AMD RX 7600", "length": 265, "tdp": 165, "price": 32000},
+    {"id": "gpu9", "name": "AMD RX 7800 XT", "length": 287, "tdp": 263, "price": 58000},
+    {"id": "gpu10", "name": "AMD RX 7900 XTX", "length": 287, "tdp": 355, "price": 105000}
   ],
   "psu": [
     {"id": "psu1", "name": "Deepcool PF550", "wattage": 550, "price": 4500},
     {"id": "psu2", "name": "Deepcool PF650", "wattage": 650, "price": 5500},
-    {"id": "psu3", "name": "Deepcool PF750", "wattage": 750, "price": 7000}
+    {"id": "psu3", "name": "Deepcool PF750", "wattage": 750, "price": 7000},
+    {"id": "psu4", "name": "be quiet! Pure Power 12 M 850W", "wattage": 850, "price": 11000},
+    {"id": "psu5", "name": "Corsair RM1000x", "wattage": 1000, "price": 16000},
+    {"id": "psu6", "name": "Seasonic Prime TX-1300", "wattage": 1300, "price": 32000}
   ],
   "case": [
     {"id": "case1", "name": "Deepcool CH370", "max_gpu": 300, "max_cooler": 160, "price": 5000},
-    {"id": "case2", "name": "Zalman i3 Neo", "max_gpu": 330, "max_cooler": 165, "price": 4500}
+    {"id": "case2", "name": "Zalman i3 Neo", "max_gpu": 330, "max_cooler": 165, "price": 4500},
+    {"id": "case3", "name": "Fractal Design Pop XL", "max_gpu": 405, "max_cooler": 185, "price": 11000},
+    {"id": "case4", "name": "NZXT H7 Flow", "max_gpu": 380, "max_cooler": 185, "price": 14000},
+    {"id": "case5", "name": "Lian Li O11 Dynamic EVO", "max_gpu": 422, "max_cooler": 167, "price": 18000},
+    {"id": "case6", "name": "be quiet! Dark Base Pro 901", "max_gpu": 472, "max_cooler": 185, "price": 28000}
   ],
   "cooler": [
     {"id": "cool1", "name": "Deepcool AG400", "height": 150, "sockets": ["LGA1700", "AM4", "AM5"], "price": 2000},
-    {"id": "cool2", "name": "Deepcool AK620", "height": 160, "sockets": ["LGA1700", "AM4", "AM5"], "price": 4000}
+    {"id": "cool2", "name": "Deepcool AK620", "height": 160, "sockets": ["LGA1700", "AM4", "AM5"], "price": 4000},
+    {"id": "cool3", "name": "be quiet! Dark Rock Pro 4", "height": 163, "sockets": ["LGA1700", "AM4", "AM5"], "price": 7500},
+    {"id": "cool4", "name": "Noctua NH-D15", "height": 165, "sockets": ["LGA1700", "AM4", "AM5"], "price": 9500},
+    {"id": "cool5", "name": "Arctic Liquid Freezer II 280", "height": 52, "sockets": ["LGA1700", "AM4", "AM5"], "price": 12000},
+    {"id": "cool6", "name": "NZXT Kraken X73 RGB", "height": 56, "sockets": ["LGA1700", "AM4", "AM5"], "price": 18000}
   ],
   "storage": [
-    {"id": "ssd1", "name": "Kingston NV2 1TB", "price": 6000},
-    {"id": "ssd2", "name": "Samsung 980 1TB", "price": 8500}
+    {"id": "ssd1", "name": "Kingston NV2 500GB", "price": 3500},
+    {"id": "ssd2", "name": "Kingston NV2 1TB", "price": 6000},
+    {"id": "ssd3", "name": "Samsung 980 1TB", "price": 8500},
+    {"id": "ssd4", "name": "Samsung 990 Pro 2TB", "price": 18000},
+    {"id": "ssd5", "name": "WD Black SN850X 2TB", "price": 17000},
+    {"id": "ssd6", "name": "Crucial T700 4TB", "price": 42000}
   ]
 }

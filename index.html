@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PC Builder // MVP</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -46,6 +47,7 @@
       <div id="builds-list" class="builds-list"></div>
     </section>
 
+    <div id="overlay" class="overlay hidden" onclick="closePicker()"></div>
     <div id="picker" class="picker hidden"></div>
   </main>
 
@@ -57,17 +59,79 @@
         return;
       }
       const picker = document.getElementById('picker');
-      picker.innerHTML = `<h3>${category.toUpperCase()}</h3>`;
-      catalog[category].forEach(item => {
-        picker.innerHTML += `<div class="pick-item" onclick="selectItem('${category}','${item.id}');closePicker()">
-          ${item.name} — ${item.price.toLocaleString('ru-RU')} ₽
-        </div>`;
-      });
-      picker.innerHTML += `<button onclick="closePicker()">[ ЗАКРЫТЬ ]</button>`;
+      const overlay = document.getElementById('overlay');
+      
+      picker.innerHTML = `
+        <h3>${category.toUpperCase()}</h3>
+        <input type="text" class="search-input" id="search-input" placeholder="Поиск..." oninput="filterPicker('${category}', this.value)">
+        <div id="picker-items"></div>
+        <button onclick="closePicker()">[ ЗАКРЫТЬ ]</button>
+      `;
+      
+      renderPickerItems(category, catalog[category]);
+      
       picker.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+      
+      // Фокус на поиск
+      setTimeout(() => document.getElementById('search-input').focus(), 50);
     }
-    function closePicker() { document.getElementById('picker').classList.add('hidden'); }
-    function toggleTheme() { document.body.classList.toggle('dark'); }
+    
+    function renderPickerItems(category, items) {
+      const container = document.getElementById('picker-items');
+      if (!container) return;
+      
+      if (items.length === 0) {
+        container.innerHTML = '<div class="muted">Ничего не найдено</div>';
+        return;
+      }
+      
+      container.innerHTML = items.map(item => {
+        const specs = [];
+        if (item.socket) specs.push(item.socket);
+        if (item.type) specs.push(item.type);
+        if (item.capacity) specs.push(item.capacity + 'GB');
+        if (item.tdp) specs.push(item.tdp + 'W');
+        if (item.length) specs.push(item.length + 'мм');
+        if (item.wattage) specs.push(item.wattage + 'W');
+        if (item.height) specs.push(item.height + 'мм');
+        
+        return `
+          <div class="pick-item" onclick="selectItem('${category}','${item.id}');closePicker()">
+            <div class="item-name">
+              ${item.name}
+              ${specs.length ? `<span class="item-specs">${specs.join(' • ')}</span>` : ''}
+            </div>
+            <div class="item-price">${item.price.toLocaleString('ru-RU')} ₽</div>
+          </div>
+        `;
+      }).join('');
+    }
+    
+    function filterPicker(category, query) {
+      if (!catalog[category]) return;
+      const q = query.toLowerCase().trim();
+      const filtered = q === '' 
+        ? catalog[category] 
+        : catalog[category].filter(item => item.name.toLowerCase().includes(q));
+      renderPickerItems(category, filtered);
+    }
+    
+    function closePicker() {
+      document.getElementById('picker').classList.add('hidden');
+      document.getElementById('overlay').classList.add('hidden');
+    }
+    
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }
+    
+    // Восстановление темы
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.body.classList.add('dark');
+    }
   </script>
 </body>
 </html>

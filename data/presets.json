@@ -17,10 +17,10 @@
     "name": "Бюджетный гейминг",
     "description": "Игры в 1080p на средних-высоких настройках",
     "items": {
-      "cpu": "cpu3",
+      "cpu": "cpu2",
       "motherboard": "mb2",
       "ram": "ram2",
-      "gpu": "gpu2",
+      "gpu": "gpu4",
       "storage": "ssd3",
       "psu": "psu3",
       "case": "case2",
@@ -31,10 +31,10 @@
     "name": "AMD Бюджет",
     "description": "Платформа AM4, отличное соотношение цена/производительность",
     "items": {
-      "cpu": "cpu13",
-      "motherboard": "mb8",
+      "cpu": "cpu17",
+      "motherboard": "mb10",
       "ram": "ram2",
-      "gpu": "gpu11",
+      "gpu": "gpu78",
       "storage": "ssd3",
       "psu": "psu3",
       "case": "case2",
@@ -45,54 +45,54 @@
     "name": "Игры 1080p",
     "description": "Высокие настройки, 60+ FPS в современных играх",
     "items": {
-      "cpu": "cpu5",
+      "cpu": "cpu7",
       "motherboard": "mb3",
       "ram": "ram3",
-      "gpu": "gpu17",
+      "gpu": "gpu53",
       "storage": "ssd5",
       "psu": "psu4",
       "case": "case3",
       "cooler": "cool3"
     }
   },
+  "intel_1440p": {
+    "name": "Intel 1440p",
+    "description": "Оптимальный выбор для 2K монитора (Intel + RTX 5070)",
+    "items": {
+      "cpu": "cpu12",
+      "motherboard": "mb4",
+      "ram": "ram7",
+      "gpu": "gpu61",
+      "storage": "ssd6",
+      "psu": "psu6",
+      "case": "case4",
+      "cooler": "cool5"
+    }
+  },
   "next_gen_1440p": {
     "name": "Next-Gen 1440p",
     "description": "RTX 5070 Ti — новое поколение для 2K гейминга",
     "items": {
-      "cpu": "cpu26",
-      "motherboard": "mb12",
-      "ram": "ram6",
-      "gpu": "gpu20",
+      "cpu": "cpu31",
+      "motherboard": "mb14",
+      "ram": "ram7",
+      "gpu": "gpu66",
       "storage": "ssd6",
-      "psu": "psu6",
+      "psu": "psu7",
       "case": "case5",
       "cooler": "cool4"
-    }
-  },
-  "gaming1440p": {
-    "name": "Игры 1440p",
-    "description": "Оптимальный выбор для 2K монитора (1440p)",
-    "items": {
-      "cpu": "cpu8",
-      "motherboard": "mb4",
-      "ram": "ram6",
-      "gpu": "gpu19",
-      "storage": "ssd6",
-      "psu": "psu5",
-      "case": "case4",
-      "cooler": "cool5"
     }
   },
   "amd_gaming": {
     "name": "AMD Gaming",
     "description": "Платформа AM5, Ryzen 7 7800X3D + RX 9070 XT",
     "items": {
-      "cpu": "cpu23",
-      "motherboard": "mb13",
-      "ram": "ram6",
-      "gpu": "gpu24",
+      "cpu": "cpu28",
+      "motherboard": "mb15",
+      "ram": "ram7",
+      "gpu": "gpu116",
       "storage": "ssd6",
-      "psu": "psu5",
+      "psu": "psu6",
       "case": "case4",
       "cooler": "cool5"
     }
@@ -101,12 +101,12 @@
     "name": "Игры 4K",
     "description": "Максимальная производительность в 4K разрешении",
     "items": {
-      "cpu": "cpu10",
-      "motherboard": "mb5",
-      "ram": "ram7",
-      "gpu": "gpu21",
+      "cpu": "cpu13",
+      "motherboard": "mb6",
+      "ram": "ram9",
+      "gpu": "gpu69",
       "storage": "ssd6",
-      "psu": "psu7",
+      "psu": "psu8",
       "case": "case6",
       "cooler": "cool7"
     }
@@ -115,12 +115,12 @@
     "name": "Ультра 4K",
     "description": "Без компромиссов. RTX 5090, топовые компоненты",
     "items": {
-      "cpu": "cpu11",
-      "motherboard": "mb6",
-      "ram": "ram8",
-      "gpu": "gpu22",
+      "cpu": "cpu14",
+      "motherboard": "mb7",
+      "ram": "ram11",
+      "gpu": "gpu74",
       "storage": "ssd8",
-      "psu": "psu10",
+      "psu": "psu11",
       "case": "case9",
       "cooler": "cool9"
     }
@@ -129,14 +129,42 @@
     "name": "Рабочая станция",
     "description": "Для рендера, монтажа видео и тяжелых рабочих задач",
     "items": {
-      "cpu": "cpu28",
-      "motherboard": "mb15",
-      "ram": "ram8",
-      "gpu": "gpu22",
+      "cpu": "cpu34",
+      "motherboard": "mb19",
+      "ram": "ram11",
+      "gpu": "gpu75",
       "storage": "ssd8",
-      "psu": "psu10",
+      "psu": "psu11",
       "case": "case8",
       "cooler": "cool8"
+    }
+  },
+  "intel_arc_budget": {
+    "name": "Intel Arc Бюджет",
+    "description": "Экспериментальная сборка с Intel Arc A750",
+    "items": {
+      "cpu": "cpu2",
+      "motherboard": "mb2",
+      "ram": "ram2",
+      "gpu": "gpu126",
+      "storage": "ssd3",
+      "psu": "psu4",
+      "case": "case3",
+      "cooler": "cool3"
+    }
+  },
+  "amd_rdna4": {
+    "name": "AMD RDNA 4",
+    "description": "Новейшая платформа AMD RX 9080",
+    "items": {
+      "cpu": "cpu32",
+      "motherboard": "mb16",
+      "ram": "ram9",
+      "gpu": "gpu121",
+      "storage": "ssd7",
+      "psu": "psu9",
+      "case": "case7",
+      "cooler": "cool7"
     }
   }
 }

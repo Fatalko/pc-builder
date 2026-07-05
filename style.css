@@ -42,3 +42,67 @@ button:hover { background: var(--fg); color: var(--bg); }
 .picker.hidden { display: none; }
 .pick-item { padding: 8px; cursor: pointer; border-bottom: 1px dashed var(--border); }
 .pick-item:hover { background: var(--fg); color: var(--bg); }
+/* История сборок */
+.history {
+  margin-top: 48px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+.builds-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.build-card {
+  border: 1px solid var(--border);
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.build-card:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+.build-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+.build-card .muted {
+  font-size: 11px;
+}
+.build-card .price {
+  font-weight: bold;
+  margin-top: 8px;
+}
+.empty-history {
+  color: var(--muted);
+  font-size: 12px;
+  padding: 12px 0;
+}
+.presets {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--border);
+}
+.preset-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.preset-buttons button {
+  width: auto;
+  margin: 0;
+  padding: 6px 12px;
+}
+.delete-btn {
+  width: auto !important;
+  margin: 0 !important;
+  padding: 2px 6px !important;
+  font-size: 11px;
+  color: var(--error);
+  border-color: var(--error) !important;
+}
+.delete-btn:hover {
+  background: var(--error) !important;
+  color: var(--bg) !important;
+}

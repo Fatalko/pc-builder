@@ -1,0 +1,44 @@
+{
+  "office": {
+    "name": "Офисный ПК",
+    "description": "Для работы с документами и интернетом",
+    "items": {
+      "cpu": "cpu1",
+      "motherboard": "mb1",
+      "ram": "ram1",
+      "gpu": null,
+      "storage": "ssd1",
+      "psu": "psu1",
+      "case": "case1",
+      "cooler": "cool1"
+    }
+  },
+  "gaming1080": {
+    "name": "Игры 1080p",
+    "description": "Баланс цены и производительности",
+    "items": {
+      "cpu": "cpu2",
+      "motherboard": "mb2",
+      "ram": "ram2",
+      "gpu": "gpu1",
+      "storage": "ssd1",
+      "psu": "psu2",
+      "case": "case1",
+      "cooler": "cool1"
+    }
+  },
+  "gaming4k": {
+    "name": "Игры 4K",
+    "description": "Максимальная производительность",
+    "items": {
+      "cpu": "cpu4",
+      "motherboard": "mb4",
+      "ram": "ram3",
+      "gpu": "gpu2",
+      "storage": "ssd2",
+      "psu": "psu3",
+      "case": "case2",
+      "cooler": "cool2"
+    }
+  }
+}

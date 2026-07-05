@@ -17,6 +17,10 @@
     <div class="grid">
       <div class="slots">
         <h1>ВЫБОР КОМПЛЕКТУЮЩИХ</h1>
+        <div class="presets">
+          <div class="muted" style="margin-bottom:8px">БЫСТРЫЙ ВЫБОР:</div>
+          <div id="presets-buttons" class="preset-buttons"></div>
+        </div>
         <div id="slot-cpu" class="slot" onclick="openPicker('cpu')">[+] ПРОЦЕССОР<br><span class="muted">не выбрано</span></div>
         <div id="slot-motherboard" class="slot" onclick="openPicker('motherboard')">[+] МАТ. ПЛАТА<br><span class="muted">не выбрано</span></div>
         <div id="slot-ram" class="slot" onclick="openPicker('ram')">[+] ОЗУ<br><span class="muted">не выбрано</span></div>
@@ -37,12 +41,21 @@
       </aside>
     </div>
 
+    <section class="history">
+      <h2>МОИ СБОРКИ</h2>
+      <div id="builds-list" class="builds-list"></div>
+    </section>
+
     <div id="picker" class="picker hidden"></div>
   </main>
 
   <script src="app.js"></script>
   <script>
     function openPicker(category) {
+      if (!catalog[category]) {
+        alert('Каталог ещё загружается, подождите секунду');
+        return;
+      }
       const picker = document.getElementById('picker');
       picker.innerHTML = `<h3>${category.toUpperCase()}</h3>`;
       catalog[category].forEach(item => {

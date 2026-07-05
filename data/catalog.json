@@ -1,0 +1,41 @@
+{
+  "cpu": [
+    {"id": "cpu1", "name": "Intel Core i5-12400F", "socket": "LGA1700", "tdp": 117, "price": 14000},
+    {"id": "cpu2", "name": "Intel Core i5-13400F", "socket": "LGA1700", "tdp": 148, "price": 18500},
+    {"id": "cpu3", "name": "AMD Ryzen 5 5600", "socket": "AM4", "tdp": 65, "price": 13000},
+    {"id": "cpu4", "name": "AMD Ryzen 5 7600", "socket": "AM5", "tdp": 105, "price": 22000}
+  ],
+  "motherboard": [
+    {"id": "mb1", "name": "MSI PRO B660M-A", "socket": "LGA1700", "ram_type": "DDR4", "form": "mATX", "price": 10000},
+    {"id": "mb2", "name": "ASUS PRIME B760M-K", "socket": "LGA1700", "ram_type": "DDR4", "form": "mATX", "price": 11000},
+    {"id": "mb3", "name": "Gigabyte B550M AORUS", "socket": "AM4", "ram_type": "DDR4", "form": "mATX", "price": 9500},
+    {"id": "mb4", "name": "MSI PRO B650M-P", "socket": "AM5", "ram_type": "DDR5", "form": "mATX", "price": 14000}
+  ],
+  "ram": [
+    {"id": "ram1", "name": "Kingston Fury 16GB DDR4 3200", "type": "DDR4", "capacity": 16, "price": 4000},
+    {"id": "ram2", "name": "Kingston Fury 32GB DDR4 3200", "type": "DDR4", "capacity": 32, "price": 7500},
+    {"id": "ram3", "name": "Kingston Fury 32GB DDR5 5600", "type": "DDR5", "capacity": 32, "price": 11000}
+  ],
+  "gpu": [
+    {"id": "gpu1", "name": "NVIDIA RTX 4060", "length": 245, "tdp": 115, "price": 38000},
+    {"id": "gpu2", "name": "NVIDIA RTX 4070", "length": 300, "tdp": 200, "price": 65000},
+    {"id": "gpu3", "name": "AMD RX 7600", "length": 265, "tdp": 165, "price": 32000}
+  ],
+  "psu": [
+    {"id": "psu1", "name": "Deepcool PF550", "wattage": 550, "price": 4500},
+    {"id": "psu2", "name": "Deepcool PF650", "wattage": 650, "price": 5500},
+    {"id": "psu3", "name": "Deepcool PF750", "wattage": 750, "price": 7000}
+  ],
+  "case": [
+    {"id": "case1", "name": "Deepcool CH370", "max_gpu": 300, "max_cooler": 160, "price": 5000},
+    {"id": "case2", "name": "Zalman i3 Neo", "max_gpu": 330, "max_cooler": 165, "price": 4500}
+  ],
+  "cooler": [
+    {"id": "cool1", "name": "Deepcool AG400", "height": 150, "sockets": ["LGA1700", "AM4", "AM5"], "price": 2000},
+    {"id": "cool2", "name": "Deepcool AK620", "height": 160, "sockets": ["LGA1700", "AM4", "AM5"], "price": 4000}
+  ],
+  "storage": [
+    {"id": "ssd1", "name": "Kingston NV2 1TB", "price": 6000},
+    {"id": "ssd2", "name": "Samsung 980 1TB", "price": 8500}
+  ]
+}

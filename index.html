@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>PC Builder // MVP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <span class="logo">[ PC-BUILDER ]</span>
+      <button onclick="toggleTheme()">[ ◐ ТЕМА ]</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="grid">
+      <div class="slots">
+        <h1>ВЫБОР КОМПЛЕКТУЮЩИХ</h1>
+        <div id="slot-cpu" class="slot" onclick="openPicker('cpu')">[+] ПРОЦЕССОР<br><span class="muted">не выбрано</span></div>
+        <div id="slot-motherboard" class="slot" onclick="openPicker('motherboard')">[+] МАТ. ПЛАТА<br><span class="muted">не выбрано</span></div>
+        <div id="slot-ram" class="slot" onclick="openPicker('ram')">[+] ОЗУ<br><span class="muted">не выбрано</span></div>
+        <div id="slot-gpu" class="slot" onclick="openPicker('gpu')">[+] ВИДЕОКАРТА<br><span class="muted">не выбрано</span></div>
+        <div id="slot-storage" class="slot" onclick="openPicker('storage')">[+] НАКОПИТЕЛЬ<br><span class="muted">не выбрано</span></div>
+        <div id="slot-psu" class="slot" onclick="openPicker('psu')">[+] БЛОК ПИТАНИЯ<br><span class="muted">не выбрано</span></div>
+        <div id="slot-case" class="slot" onclick="openPicker('case')">[+] КОРПУС<br><span class="muted">не выбрано</span></div>
+        <div id="slot-cooler" class="slot" onclick="openPicker('cooler')">[+] ОХЛАЖДЕНИЕ<br><span class="muted">не выбрано</span></div>
+      </div>
+
+      <aside>
+        <h2>СТАТУС</h2>
+        <div id="status"></div>
+        <div class="total">ИТОГО: <span id="total-price">0 ₽</span></div>
+        <button onclick="copyText()">[ СКОПИРОВАТЬ ТЕКСТ ]</button>
+        <button onclick="saveBuild()">[ СОХРАНИТЬ СБОРКУ ]</button>
+        <button onclick="location.reload()">[ СБРОСИТЬ ]</button>
+      </aside>
+    </div>
+
+    <div id="picker" class="picker hidden"></div>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    function openPicker(category) {
+      const picker = document.getElementById('picker');
+      picker.innerHTML = `<h3>${category.toUpperCase()}</h3>`;
+      catalog[category].forEach(item => {
+        picker.innerHTML += `<div class="pick-item" onclick="selectItem('${category}','${item.id}');closePicker()">
+          ${item.name} — ${item.price.toLocaleString('ru-RU')} ₽
+        </div>`;
+      });
+      picker.innerHTML += `<button onclick="closePicker()">[ ЗАКРЫТЬ ]</button>`;
+      picker.classList.remove('hidden');
+    }
+    function closePicker() { document.getElementById('picker').classList.add('hidden'); }
+    function toggleTheme() { document.body.classList.toggle('dark'); }
+  </script>
+</body>
+</html>

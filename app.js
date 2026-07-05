@@ -11,7 +11,57 @@ fetch('data/catalog.json')
 // Состояние сборки
 const build = { cpu: null, motherboard: null, ram: null, gpu: null, psu: null, case: null, cooler: null, storage: null };
 
-// Проверка совместимости
+// Проверка совместимости отдельного компонента с текущей сборкой
+function checkItemCompatibility(category, item) {
+  // Если ничего не выбрано — всё совместимо
+  if (!build.cpu && !build.motherboard && !build.ram && !build.case) return true;
+
+  // Проверка материнской платы
+  if (category === 'motherboard') {
+    if (build.cpu && item.socket !== build.cpu.socket) return false;
+    if (build.ram && item.ram_type !== build.ram.type) return false;
+  }
+
+  // Проверка процессора
+  if (category === 'cpu') {
+    if (build.motherboard && item.socket !== build.motherboard.socket) return false;
+  }
+
+  // Проверка RAM
+  if (category === 'ram') {
+    if (build.motherboard && item.type !== build.motherboard.ram_type) return false;
+  }
+
+  // Проверка видеокарты
+  if (category === 'gpu') {
+    if (build.case && item.length > build.case.max_gpu) return false;
+  }
+
+  // Проверка кулера
+  if (category === 'cooler') {
+    if (build.cpu && !item.sockets.includes(build.cpu.socket)) return false;
+    if (build.case && item.height > build.case.max_cooler) return false;
+  }
+
+  // Проверка корпуса
+  if (category === 'case') {
+    if (build.gpu && item.max_gpu < build.gpu.length) return false;
+    if (build.cooler && item.max_cooler < build.cooler.height) return false;
+  }
+
+  // Проверка БП
+  if (category === 'psu') {
+    if (build.cpu && build.gpu) {
+      const totalTdp = build.cpu.tdp + build.gpu.tdp + 100;
+      if (totalTdp > item.wattage * 0.8) return false;
+    }
+  }
+
+  // Накопитель всегда совместим
+  return true;
+}
+
+// Проверка совместимости всей сборки
 function checkCompatibility() {
   const errors = [];
   const warnings = [];
@@ -36,10 +86,12 @@ function checkCompatibility() {
   return { errors, warnings };
 }
 
+// Подсчет стоимости
 function calcTotal() {
   return Object.values(build).reduce((sum, item) => sum + (item?.price || 0), 0);
 }
 
+// Обновление интерфейса
 function render() {
   const { errors, warnings } = checkCompatibility();
   const total = calcTotal();
@@ -55,6 +107,7 @@ function render() {
   }
 }
 
+// Выбор компонента
 function selectItem(category, id) {
   if (!catalog[category]) return;
   const item = catalog[category].find(x => x.id === id);
@@ -72,6 +125,7 @@ function updateSlotUI(category, item) {
     slot.innerHTML = '<span class="muted">не выбрано</span>';
 }
 
+// Сохранение в localStorage
 function saveBuild() {
   const name = prompt('Название сборки:');
   if (!name) return;
@@ -82,6 +136,7 @@ function saveBuild() {
   renderHistory();
 }
 
+// Копирование текста
 function copyText() {
   let text = 'МОЯ СБОРКА ПК:\n\n';
   Object.entries(build).forEach(([slot, item]) => {
@@ -92,6 +147,7 @@ function copyText() {
   alert('Скопировано в буфер обмена');
 }
 
+// Отображение истории сборок
 function renderHistory() {
   const list = document.getElementById('builds-list');
   if (!list) return;
@@ -125,6 +181,7 @@ function renderHistory() {
   });
 }
 
+// Загрузка сборки из истории
 function loadBuild(index) {
   const saved = JSON.parse(localStorage.getItem('builds') || '[]');
   const item = saved[index];
@@ -137,6 +194,7 @@ function loadBuild(index) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// Удаление сборки
 function deleteBuild(index) {
   const saved = JSON.parse(localStorage.getItem('builds') || '[]');
   const name = saved[index]?.name;
@@ -178,7 +236,7 @@ function applyPreset(key) {
   render();
 }
 
-// Запуск
+// Запуск при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
   renderHistory();
   render();

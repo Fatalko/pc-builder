@@ -1,13 +1,13 @@
 {
   "office": {
     "name": "Офисный ПК",
-    "description": "Для работы с документами и интернетом",
+    "description": "Для работы с документами, интернетом и мультимедиа",
     "items": {
       "cpu": "cpu1",
       "motherboard": "mb1",
       "ram": "ram1",
-      "gpu": null,
-      "storage": "ssd2",
+      "gpu": "gpu1",
+      "storage": "ssd3",
       "psu": "psu1",
       "case": "case1",
       "cooler": "cool1"
@@ -15,100 +15,128 @@
   },
   "budget_gaming": {
     "name": "Бюджетный гейминг",
-    "description": "Игры в 1080p на средних настройках",
+    "description": "Игры в 1080p на средних-высоких настройках",
     "items": {
-      "cpu": "cpu2",
+      "cpu": "cpu3",
       "motherboard": "mb2",
       "ram": "ram2",
       "gpu": "gpu2",
-      "storage": "ssd2",
-      "psu": "psu2",
+      "storage": "ssd3",
+      "psu": "psu3",
       "case": "case2",
       "cooler": "cool1"
     }
   },
   "gaming1080": {
     "name": "Игры 1080p",
-    "description": "Высокие настройки, 60+ FPS",
+    "description": "Высокие настройки, 60+ FPS в современных играх",
     "items": {
-      "cpu": "cpu3",
+      "cpu": "cpu5",
       "motherboard": "mb3",
-      "ram": "ram2",
-      "gpu": "gpu3",
-      "storage": "ssd3",
-      "psu": "psu3",
-      "case": "case2",
-      "cooler": "cool2"
+      "ram": "ram3",
+      "gpu": "gpu17",
+      "storage": "ssd5",
+      "psu": "psu4",
+      "case": "case3",
+      "cooler": "cool3"
     }
   },
   "gaming1440p": {
     "name": "Игры 1440p",
-    "description": "Оптимальный выбор для 2K монитора",
+    "description": "Оптимальный выбор для 2K монитора (1440p)",
     "items": {
-      "cpu": "cpu4",
+      "cpu": "cpu8",
       "motherboard": "mb4",
-      "ram": "ram4",
-      "gpu": "gpu4",
-      "storage": "ssd3",
-      "psu": "psu4",
-      "case": "case3",
-      "cooler": "cool3"
+      "ram": "ram6",
+      "gpu": "gpu19",
+      "storage": "ssd6",
+      "psu": "psu5",
+      "case": "case4",
+      "cooler": "cool5"
     }
   },
   "gaming4k": {
     "name": "Игры 4K",
-    "description": "Максимальная производительность",
+    "description": "Максимальная производительность в 4K разрешении",
     "items": {
-      "cpu": "cpu5",
+      "cpu": "cpu10",
       "motherboard": "mb5",
-      "ram": "ram5",
-      "gpu": "gpu6",
-      "storage": "ssd4",
-      "psu": "psu5",
-      "case": "case4",
-      "cooler": "cool4"
+      "ram": "ram7",
+      "gpu": "gpu21",
+      "storage": "ssd6",
+      "psu": "psu7",
+      "case": "case6",
+      "cooler": "cool7"
     }
   },
   "ultra_4k": {
     "name": "Ультра 4K",
-    "description": "Без компромиссов. RTX 4090",
+    "description": "Без компромиссов. RTX 5090, топовые компоненты",
     "items": {
-      "cpu": "cpu6",
-      "motherboard": "mb5",
-      "ram": "ram5",
-      "gpu": "gpu7",
-      "storage": "ssd6",
-      "psu": "psu6",
-      "case": "case6",
-      "cooler": "cool6"
+      "cpu": "cpu11",
+      "motherboard": "mb6",
+      "ram": "ram8",
+      "gpu": "gpu22",
+      "storage": "ssd8",
+      "psu": "psu10",
+      "case": "case9",
+      "cooler": "cool9"
     }
   },
   "amd_gaming": {
     "name": "AMD Gaming",
-    "description": "Платформа AM5, Ryzen 7 7800X3D",
+    "description": "Платформа AM5, Ryzen 7 7800X3D + RX 9070 XT",
     "items": {
-      "cpu": "cpu10",
-      "motherboard": "mb9",
-      "ram": "ram4",
-      "gpu": "gpu5",
-      "storage": "ssd4",
-      "psu": "psu4",
-      "case": "case3",
-      "cooler": "cool3"
+      "cpu": "cpu23",
+      "motherboard": "mb13",
+      "ram": "ram6",
+      "gpu": "gpu24",
+      "storage": "ssd6",
+      "psu": "psu5",
+      "case": "case4",
+      "cooler": "cool5"
     }
   },
   "workstation": {
     "name": "Рабочая станция",
-    "description": "Для рендера и монтажа",
+    "description": "Для рендера, монтажа видео и тяжелых рабочих задач",
     "items": {
-      "cpu": "cpu11",
-      "motherboard": "mb10",
-      "ram": "ram5",
-      "gpu": "gpu7",
+      "cpu": "cpu28",
+      "motherboard": "mb15",
+      "ram": "ram8",
+      "gpu": "gpu22",
+      "storage": "ssd8",
+      "psu": "psu10",
+      "case": "case8",
+      "cooler": "cool8"
+    }
+  },
+  "next_gen_1440p": {
+    "name": "Next-Gen 1440p",
+    "description": "RTX 5070 Ti — новое поколение для 2K гейминга",
+    "items": {
+      "cpu": "cpu26",
+      "motherboard": "mb12",
+      "ram": "ram6",
+      "gpu": "gpu20",
       "storage": "ssd6",
       "psu": "psu6",
-      "case": "case6",
-      "cooler": "cool5"
+      "case": "case5",
+      "cooler": "cool4"
+    }
+  },
+  "amd_budget": {
+    "name": "AMD Бюджет",
+    "description": "Платформа AM4, отличное соотношение цена/производительность",
+    "items": {
+      "cpu": "cpu13",
+      "motherboard": "mb8",
+      "ram": "ram2",
+      "gpu": "gpu11",
+      "storage": "ssd3",
+      "psu": "psu3",
+      "case": "case2",
+      "cooler": "cool2"
     }
   }
 }

@@ -342,3 +342,50 @@ button:active {
     padding: 5px 8px;
   }
 }
+/* Обёртка слота с заголовком */
+.slot-wrapper {
+  margin-bottom: 16px;
+}
+
+.slot-label {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  color: var(--muted);
+}
+
+/* Неактивные компоненты */
+.pick-item.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(128, 128, 128, 0.1) 5px,
+    rgba(128, 128, 128, 0.1) 10px
+  );
+}
+
+.pick-item.disabled:hover {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(128, 128, 128, 0.1) 5px,
+    rgba(128, 128, 128, 0.1) 10px
+  );
+  color: var(--fg);
+  padding-left: 10px;
+}
+
+.disabled-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: var(--error);
+  color: var(--bg);
+  font-size: 10px;
+  border-radius: 2px;
+}

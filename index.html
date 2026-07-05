@@ -10,7 +10,7 @@
   <header>
     <nav>
       <span class="logo">[ PC-BUILDER ]</span>
-      <button onclick="toggleTheme()">[ ◐ ТЕМА ]</button>
+      <button onclick="toggleTheme()">[  ТЕМА ]</button>
     </nav>
   </header>
 
@@ -22,14 +22,46 @@
           <div class="muted" style="margin-bottom:8px">БЫСТРЫЙ ВЫБОР:</div>
           <div id="presets-buttons" class="preset-buttons"></div>
         </div>
-        <div id="slot-cpu" class="slot" onclick="openPicker('cpu')">[+] ПРОЦЕССОР<br><span class="muted">не выбрано</span></div>
-        <div id="slot-motherboard" class="slot" onclick="openPicker('motherboard')">[+] МАТ. ПЛАТА<br><span class="muted">не выбрано</span></div>
-        <div id="slot-ram" class="slot" onclick="openPicker('ram')">[+] ОЗУ<br><span class="muted">не выбрано</span></div>
-        <div id="slot-gpu" class="slot" onclick="openPicker('gpu')">[+] ВИДЕОКАРТА<br><span class="muted">не выбрано</span></div>
-        <div id="slot-storage" class="slot" onclick="openPicker('storage')">[+] НАКОПИТЕЛЬ<br><span class="muted">не выбрано</span></div>
-        <div id="slot-psu" class="slot" onclick="openPicker('psu')">[+] БЛОК ПИТАНИЯ<br><span class="muted">не выбрано</span></div>
-        <div id="slot-case" class="slot" onclick="openPicker('case')">[+] КОРПУС<br><span class="muted">не выбрано</span></div>
-        <div id="slot-cooler" class="slot" onclick="openPicker('cooler')">[+] ОХЛАЖДЕНИЕ<br><span class="muted">не выбрано</span></div>
+        
+        <div class="slot-wrapper">
+          <div class="slot-label">ПРОЦЕССОР</div>
+          <div id="slot-cpu" class="slot" onclick="openPicker('cpu')"><span class="muted">не выбрано</span></div>
+        </div>
+        
+        <div class="slot-wrapper">
+          <div class="slot-label">МАТ. ПЛАТА</div>
+          <div id="slot-motherboard" class="slot" onclick="openPicker('motherboard')"><span class="muted">не выбрано</span></div>
+        </div>
+        
+        <div class="slot-wrapper">
+          <div class="slot-label">ОЗУ</div>
+          <div id="slot-ram" class="slot" onclick="openPicker('ram')"><span class="muted">не выбрано</span></div>
+        </div>
+        
+        <div class="slot-wrapper">
+          <div class="slot-label">ВИДЕОКАРТА</div>
+          <div id="slot-gpu" class="slot" onclick="openPicker('gpu')"><span class="muted">не выбрано</span></div>
+        </div>
+        
+        <div class="slot-wrapper">
+          <div class="slot-label">НАКОПИТЕЛЬ</div>
+          <div id="slot-storage" class="slot" onclick="openPicker('storage')"><span class="muted">не выбрано</span></div>
+        </div>
+        
+        <div class="slot-wrapper">
+          <div class="slot-label">БЛОК ПИТАНИЯ</div>
+          <div id="slot-psu" class="slot" onclick="openPicker('psu')"><span class="muted">не выбрано</span></div>
+        </div>
+        
+        <div class="slot-wrapper">
+          <div class="slot-label">КОРПУС</div>
+          <div id="slot-case" class="slot" onclick="openPicker('case')"><span class="muted">не выбрано</span></div>
+        </div>
+        
+        <div class="slot-wrapper">
+          <div class="slot-label">ОХЛАЖДЕНИЕ</div>
+          <div id="slot-cooler" class="slot" onclick="openPicker('cooler')"><span class="muted">не выбрано</span></div>
+        </div>
       </div>
 
       <aside>
@@ -73,7 +105,6 @@
       picker.classList.remove('hidden');
       overlay.classList.remove('hidden');
       
-      // Фокус на поиск
       setTimeout(() => document.getElementById('search-input').focus(), 50);
     }
     
@@ -96,13 +127,19 @@
         if (item.wattage) specs.push(item.wattage + 'W');
         if (item.height) specs.push(item.height + 'мм');
         
+        const isCompatible = checkItemCompatibility(category, item);
+        const disabledClass = isCompatible ? '' : 'disabled';
+        const clickHandler = isCompatible ? `onclick="selectItem('${category}','${item.id}');closePicker()"` : '';
+        const disabledText = isCompatible ? '' : '<span class="disabled-badge">Несовместимо</span>';
+        
         return `
-          <div class="pick-item" onclick="selectItem('${category}','${item.id}');closePicker()">
+          <div class="pick-item ${disabledClass}" ${clickHandler}>
             <div class="item-name">
               ${item.name}
               ${specs.length ? `<span class="item-specs">${specs.join(' • ')}</span>` : ''}
             </div>
             <div class="item-price">${item.price.toLocaleString('ru-RU')} ₽</div>
+            ${disabledText}
           </div>
         `;
       }).join('');
@@ -127,7 +164,6 @@
       localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
     }
     
-    // Восстановление темы
     if (localStorage.getItem('theme') === 'dark' || 
         (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.body.classList.add('dark');

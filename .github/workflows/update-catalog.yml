@@ -1,0 +1,46 @@
+name: Update PC Components Catalog
+
+on:
+  schedule:
+    # Запуск каждый день в 3:00 UTC (6:00 МСК)
+    - cron: '0 3 * * *'
+  workflow_dispatch:  # Ручной запуск
+
+permissions:
+  contents: write
+
+jobs:
+  update-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          cd scripts
+          pip install -r requirements.txt
+
+      - name: Run parser
+        run: |
+          cd scripts
+          python parser.py
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --quiet data/catalog.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/catalog.json
+          git commit -m "🔄 Обновление каталога комплектующих ($(date +'%Y-%m-%d'))"
+          git push

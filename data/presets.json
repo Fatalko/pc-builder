@@ -27,6 +27,20 @@
       "cooler": "cool1"
     }
   },
+  "amd_budget": {
+    "name": "AMD Бюджет",
+    "description": "Платформа AM4, отличное соотношение цена/производительность",
+    "items": {
+      "cpu": "cpu13",
+      "motherboard": "mb8",
+      "ram": "ram2",
+      "gpu": "gpu11",
+      "storage": "ssd3",
+      "psu": "psu3",
+      "case": "case2",
+      "cooler": "cool2"
+    }
+  },
   "gaming1080": {
     "name": "Игры 1080p",
     "description": "Высокие настройки, 60+ FPS в современных играх",
@@ -41,6 +55,20 @@
       "cooler": "cool3"
     }
   },
+  "next_gen_1440p": {
+    "name": "Next-Gen 1440p",
+    "description": "RTX 5070 Ti — новое поколение для 2K гейминга",
+    "items": {
+      "cpu": "cpu26",
+      "motherboard": "mb12",
+      "ram": "ram6",
+      "gpu": "gpu20",
+      "storage": "ssd6",
+      "psu": "psu6",
+      "case": "case5",
+      "cooler": "cool4"
+    }
+  },
   "gaming1440p": {
     "name": "Игры 1440p",
     "description": "Оптимальный выбор для 2K монитора (1440p)",
@@ -49,6 +77,20 @@
       "motherboard": "mb4",
       "ram": "ram6",
       "gpu": "gpu19",
+      "storage": "ssd6",
+      "psu": "psu5",
+      "case": "case4",
+      "cooler": "cool5"
+    }
+  },
+  "amd_gaming": {
+    "name": "AMD Gaming",
+    "description": "Платформа AM5, Ryzen 7 7800X3D + RX 9070 XT",
+    "items": {
+      "cpu": "cpu23",
+      "motherboard": "mb13",
+      "ram": "ram6",
+      "gpu": "gpu24",
       "storage": "ssd6",
       "psu": "psu5",
       "case": "case4",
@@ -83,20 +125,6 @@
       "cooler": "cool9"
     }
   },
-  "amd_gaming": {
-    "name": "AMD Gaming",
-    "description": "Платформа AM5, Ryzen 7 7800X3D + RX 9070 XT",
-    "items": {
-      "cpu": "cpu23",
-      "motherboard": "mb13",
-      "ram": "ram6",
-      "gpu": "gpu24",
-      "storage": "ssd6",
-      "psu": "psu5",
-      "case": "case4",
-      "cooler": "cool5"
-    }
-  },
   "workstation": {
     "name": "Рабочая станция",
     "description": "Для рендера, монтажа видео и тяжелых рабочих задач",
@@ -109,34 +137,6 @@
       "psu": "psu10",
       "case": "case8",
       "cooler": "cool8"
-    }
-  },
-  "next_gen_1440p": {
-    "name": "Next-Gen 1440p",
-    "description": "RTX 5070 Ti — новое поколение для 2K гейминга",
-    "items": {
-      "cpu": "cpu26",
-      "motherboard": "mb12",
-      "ram": "ram6",
-      "gpu": "gpu20",
-      "storage": "ssd6",
-      "psu": "psu6",
-      "case": "case5",
-      "cooler": "cool4"
-    }
-  },
-  "amd_budget": {
-    "name": "AMD Бюджет",
-    "description": "Платформа AM4, отличное соотношение цена/производительность",
-    "items": {
-      "cpu": "cpu13",
-      "motherboard": "mb8",
-      "ram": "ram2",
-      "gpu": "gpu11",
-      "storage": "ssd3",
-      "psu": "psu3",
-      "case": "case2",
-      "cooler": "cool2"
     }
   }
 }

@@ -96,9 +96,16 @@ function copyText() {
 
 // Отображение истории сборок
 function renderHistory() {
+  console.log('[renderHistory] Начало');
+  
   const list = document.getElementById('builds-list');
-  if (!list) return;
+  if (!list) {
+    console.error('[renderHistory] Элемент builds-list не найден');
+    return;
+  }
+  
   const saved = JSON.parse(localStorage.getItem('builds') || '[]');
+  console.log('[renderHistory] Найдено сборок:', saved.length);
 
   if (saved.length === 0) {
     list.innerHTML = '<div class="empty-history">Пока нет сохранённых сборок</div>';
@@ -109,23 +116,30 @@ function renderHistory() {
   list.innerHTML = '';
 
   saved.forEach((item, index) => {
-    const total = Object.values(item.build).reduce((sum, x) => sum + (x?.price || 0), 0);
-    const itemsCount = Object.values(item.build).filter(x => x).length;
-    const date = new Date(item.date).toLocaleDateString('ru-RU');
+    try {
+      const total = Object.values(item.build).reduce((sum, x) => sum + (x?.price || 0), 0);
+      const itemsCount = Object.values(item.build).filter(x => x).length;
+      const date = new Date(item.date).toLocaleDateString('ru-RU');
 
-    const card = document.createElement('div');
-    card.className = 'build-card';
-    card.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:start">
-        <h4 style="flex:1; margin:0">${item.name}</h4>
-        <button class="delete-btn" onclick="event.stopPropagation(); deleteBuild(${index})" title="Удалить">[✗]</button>
-      </div>
-      <div class="muted">${date} • ${itemsCount} компонентов</div>
-      <div class="price">${total.toLocaleString('ru-RU')} ₽</div>
-    `;
-    card.onclick = () => loadBuild(index);
-    list.appendChild(card);
+      const card = document.createElement('div');
+      card.className = 'build-card';
+      card.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:start">
+          <h4 style="flex:1; margin:0">${item.name}</h4>
+          <button class="delete-btn" onclick="event.stopPropagation(); deleteBuild(${index})" title="Удалить">[✗]</button>
+        </div>
+        <div class="muted">${date} • ${itemsCount} компонентов</div>
+        <div class="price">${total.toLocaleString('ru-RU')} ₽</div>
+      `;
+      card.onclick = () => loadBuild(index);
+      list.appendChild(card);
+      console.log(`[renderHistory] Добавлена карточка #${index}: ${item.name}`);
+    } catch (e) {
+      console.error(`[renderHistory] Ошибка при рендере сборки #${index}:`, e);
+    }
   });
+  
+  console.log('[renderHistory] Конец');
 }
 
 // Загрузка сборки из истории

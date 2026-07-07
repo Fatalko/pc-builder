@@ -326,6 +326,16 @@
       "ram_type": "DDR5",
       "form": "ATX",
       "price": 52500
+    },
+    {
+      "id": "mot01",
+      "name": "Unknown",
+      "price": 22499,
+      "source": "PricesAPI",
+      "last_updated": "2026-07-07T06:41:21.336909",
+      "socket": "AM4",
+      "ram_type": "DDR4",
+      "form": "ATX"
     }
   ],
   "ram": [
@@ -384,6 +394,15 @@
       "type": "DDR5",
       "capacity": 96,
       "price": 54000
+    },
+    {
+      "id": "ram01",
+      "name": "Unknown",
+      "price": 10799,
+      "source": "PricesAPI",
+      "last_updated": "2026-07-07T06:44:08.989491",
+      "type": "DDR4",
+      "capacity": 32
     }
   ],
   "gpu": [
@@ -705,6 +724,15 @@
       "max_gpu": 400,
       "max_cooler": 180,
       "price": 26500
+    },
+    {
+      "id": "cas01",
+      "name": "Unknown",
+      "price": 7199,
+      "source": "PricesAPI",
+      "last_updated": "2026-07-07T06:46:26.889569",
+      "max_gpu": 350,
+      "max_cooler": 170
     }
   ],
   "cooler": [
@@ -806,6 +834,19 @@
         "AM5"
       ],
       "price": 27000
+    },
+    {
+      "id": "coo01",
+      "name": "Unknown",
+      "price": 2700,
+      "source": "PricesAPI",
+      "last_updated": "2026-07-07T06:48:20.675751",
+      "height": 160,
+      "sockets": [
+        "LGA1700",
+        "AM4",
+        "AM5"
+      ]
     }
   ],
   "storage": [
@@ -848,6 +889,13 @@
       "id": "ssd8",
       "name": "Crucial T700 4TB NVMe Gen5",
       "price": 44000
+    },
+    {
+      "id": "sto01",
+      "name": "Unknown",
+      "price": 9720,
+      "source": "PricesAPI",
+      "last_updated": "2026-07-07T06:45:36.969936"
     }
   ]
 }
